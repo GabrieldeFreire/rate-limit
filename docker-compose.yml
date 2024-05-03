@@ -1,0 +1,28 @@
+# docker-compose.yml
+version: '3'
+
+services:
+  redis:
+    image: redis
+    container_name: redis
+    expose:
+      - 6379
+
+  rate-limiter:
+    build:
+      context: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - redis
+    environment:
+      MAX_REQUESTS: ${MAX_REQUESTS:-10}
+      WINDOW_SECONDS: ${WINDOW_SECONDS:-5}
+      BLOCK_SECONDS: ${BLOCK_SECONDS:-5}
+      LOG_LEVEL: ${BLOCK_SECONDS:-INFO}
+      MAX_REQUESTS_IP: ${MAX_REQUESTS_IP}
+      WINDOW_SECONDS_IP: ${WINDOW_SECONDS_IP}
+      BLOCK_SECONDS_IP: ${BLOCK_SECONDS_IP}
+      MAX_REQUESTS_TOKEN: ${MAX_REQUESTS_TOKEN}
+      WINDOW_SECONDS_TOKEN: ${WINDOW_SECONDS_TOKEN}
+      BLOCK_SECONDS_TOKEN: ${BLOCK_SECONDS_TOKEN}

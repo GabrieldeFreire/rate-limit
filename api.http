@@ -1,0 +1,7 @@
+GET  http://localhost:8080/
+
+####
+
+GET  http://localhost:8080/
+Content-Type: application/json
+API_KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiZnJlaXRhc3MifQ.UEhCVQPkfV6QWuMaawcQZtqdDX6GulR6FHH_d1DSRss
