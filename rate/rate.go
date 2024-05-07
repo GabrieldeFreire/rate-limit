@@ -63,7 +63,12 @@ func NewIpRateLimiter(cacheStrategy cache.CacheStrategy) *RateLimiter {
 			os.Exit(1)
 		}
 	}
-
+	logger.Info(
+		"Rate limit IP setup",
+		"maxRequests", maxRequests,
+		"windowSeconds", windowSeconds,
+		"blockSeconds", blockSeconds,
+	)
 	windowMillisecond := windowSeconds * 1000
 	blockMillisecond := blockSeconds * 1000
 	requestsConfig := RequestsConfig{
@@ -111,7 +116,12 @@ func NewTokenRateLimitter(cacheStrategy cache.CacheStrategy) *RateLimiter {
 			os.Exit(1)
 		}
 	}
-
+	logger.Info(
+		"Rate limit TOKEN setup",
+		"maxRequests", maxRequests,
+		"windowSeconds", windowSeconds,
+		"blockSeconds", blockSeconds,
+	)
 	windowMillisecond := windowSeconds * 1000
 	blockMillisecond := blockSeconds * 1000
 	requestsConfig := RequestsConfig{
